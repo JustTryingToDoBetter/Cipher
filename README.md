@@ -1,168 +1,199 @@
-
-# 🔐 Cipher: Evolutionary Computed Strong Password Generator  
-**COS738 Cybersecurity Project (2025)**  
-Developed by: *Jaydin Morrison*  
-Supervisor: *Professor J.M. Blackledge*  
-Institution: *University of the Western Cape*  
-Date: *November 2025*  
-
----
-
-## 📘 Overview
-
-**Cipher** is a complete software project developed for the **COS738 Cybersecurity Specialist Seminar** module.  
-It demonstrates how **Evolutionary Computing (EC)** and **AI-based code generation** can be applied to design, test, and deploy a **strong password generator** that evolves cryptographic ciphers.
-
-The project consists of **three deliverables**:
-1. Generation of a **unique cipher** using **TuringBot**
-2. Design and implementation of a **Python GUI**
-3. **Translation to C#** using AI-assisted development (ChatGPT)
-
-The system transforms a **weak, memorable password** into a **strong, reproducible password**, combining *cryptographic theory*, *AI automation*, and *evolutionary computation*.
+# COS738 Cybersecurity Assignment – Blackledge (2025)
+**Module:** COS738 Cyber Security  
+**Lecturer:** Prof. J.M. Blackledge  
+**Examiner:** J.M. Blackledge  
+**Weighting:** 20%  
+**Submission Deadline:** 31 October 2025 @ 17:00 (SAST)
 
 ---
 
-## 📂 Project Structure
+## 📘 Project Overview
+This assignment is based on the paper *“Application of Evolutionary Computing for Generating Encryption Algorithms using AI-based Code Generation”* by Blackledge, Kingstone, and Midgley (2025), provided in the **Pre-publication.pdf**.  
 
+The overall goal is to develop a software system that:
+1. Generates a **unique cipher** using **Evolutionary Computing (EC)** through **TuringBot**.  
+2. Builds a **Graphical User Interface (GUI)** to create and display strong passwords generated using that cipher.  
+3. **Translates** the final Python implementation into **Java**, ensuring equivalent logic and GUI functionality.
+
+---
+
+## 🧩 Project Structure
 ```
-Cipher/
+COS738_Assignment/
 │
-├── Project1/                # Evolutionary Computed Cipher (EC) Generation
-│   ├── ec_formula.py
-│   ├── turingbot_input.csv
-│   ├── results_screenshot.png
-│   └── README_Project1.md
-│
-├── Project2/                # GUI Implementation in Python
-│   ├── gui_main.py
-│   ├── assets/
+├── Project1_EC_Cipher/
+│   ├── ec_cipher.py
 │   ├── screenshots/
-│   └── README_Project2.md
+│   └── README.md
 │
-├── Project3/                # Translated C# Version
-│   ├── CipherGUI.csproj
-│   ├── MainWindow.xaml
-│   ├── MainWindow.xaml.cs
-│   └── README_Project3.md
+├── Project2_GUI/
+│   ├── ec_password_gui.py
+│   ├── Project1/
+│   │   └── ec_password_generator.py
+│   ├── gui_screenshots/
+│   └── README.md
 │
-└── README.md                # Main documentation file
+├── Project3_Java_Translation/
+│   ├── ECPasswordGUI.java
+│   ├── ECPasswordGenerator.java
+│   ├── screenshots/
+│   └── README.md
+│
+└── Overview_README.md  ← (this file)
 ```
 
 ---
 
-## 🧬 Project 1 — Evolutionary Cipher Generation
+## 🧠 Theoretical Background
+The system leverages **Evolutionary Computing (EC)** and **Symbolic Regression** to simulate random number generation using real noise data (e.g. Random.org).  
+By using **TuringBot**, a nonlinear mathematical function is evolved, which serves as a cipher generator.  
 
-### 🎯 Objective
-Generate a **unique cipher function** using **TuringBot** based on *real random noise* from **Random.org**, applying symbolic regression to model nonlinear randomness.
+This cipher replaces the standard random number generator in password generation, ensuring that:
+- The passwords are **deterministic**, **strong**, and **unique** to the user.  
+- The encryption logic is **AI-assisted** and adaptable.
 
-### 🧠 Concept
-TuringBot evolves mathematical formulas through symbolic regression to simulate random number streams.  
-This allows the creation of **bespoke encryption functions** that can regenerate identical ciphers from the same key input.
-
-### ⚙️ Example Output Function
-```python
-def ec_formula(row):
-    return 0.432357 + (-0.498752 * math.cos(
-        0.594808 * (-4.10993 * math.cosh(row) -
-        (0.590558 + math.atanh(math.cos(
-        math.tan(math.cos(row / (-0.00153462))) + row * row))))))
-```
-
-### 🧩 Process Summary
-1. Export 50 random numbers from **Random.org**
-2. Load dataset into **TuringBot**
-3. Evolve the formula using trigonometric, exponential, and hyperbolic functions
-4. Integrate the output formula into the Python program
-5. Test uniformity using statistical rank transformation
-
-### 🧪 Deliverables
-- Custom EC formula
-- Screenshot of TuringBot result
-- Test run output in Python console
+The research foundation is detailed in:
+> Blackledge et al. (2025), *Application of Evolutionary Computing for Generating Encryption Algorithms with AI-based Code Generation*, IntechOpen.
 
 ---
 
-## 🧩 Project 2 — GUI Design (Python)
+## ⚙️ Project Descriptions
 
-### 🎯 Objective
-Create a **Graphical User Interface** that enables:
-- Input of a weak (memorable) password  
-- Specification of output string length  
-- Display and file export of a **strong deterministic password**
+### **Project 1 – EC Cipher Generation**
+**Goal:**  
+Develop your own nonlinear cipher function using **TuringBot**.
 
-### 🛠️ Implementation
-Framework: `tkinter`  
-Backend: Custom EC cipher module (`ec_formula`)  
-Language: Python 3.11  
+**Steps:**
+1. Load 50 data points of real noise (e.g. from Random.org).  
+2. Use **TuringBot** to evolve a formula approximating this dataset.  
+3. Replace the existing `ec_formula(row)` in the provided Python code with your evolved function.  
+4. Test and validate the function by ensuring it outputs a random-like cipher stream.
 
-### 💡 Features
-- Deterministic password generation (same input → same output)  
-- Local file logging of generated password  
-- AI-generated code refined manually for readability and structure  
+**Deliverables:**
+- Screenshot of your TuringBot run and evolved formula.
+- Updated Python script with your own `ec_formula(row)`.
+- Short write-up describing the observed randomness and iteration behavior.
 
 ---
 
-## 💻 Project 3 — Language Translation (Python → C#)
+### **Project 2 – GUI for Strong Password Generator**
+**Goal:**  
+Create a **Tkinter GUI** that allows the user to:
+- Input a **memorable (weak)** password.
+- Choose the **desired length** of the strong password.
+- Output and display the resulting **strong password**, also written to file.
 
-### 🎯 Objective
-Recreate the entire GUI-based strong password generator in **C#** using **AI-based translation**.
+**Features:**
+- GUI components: Input fields, output box, generate button, save-to-file option.
+- Uses the EC cipher function from Project 1.
+- Demonstrates deterministic yet strong password generation.
 
-### ⚙️ Example C# Translation
-```csharp
-public static double EcFormula(double row)
-{
-    return 0.432357 - 0.498752 * Math.Cos(
-        0.594808 * (-4.10993 * Math.Cosh(row) -
-        (0.590558 + Math.Atanh(Math.Cos(
-        Math.Tan(Math.Cos(row / (-0.00153462))) + row * row)))));
+**Files:**
+- `ec_password_gui.py`
+- `ec_password_generator.py`
+
+**Deliverables:**
+- Screenshots of the running GUI.
+- Source code files.
+- Short documentation describing GUI components and how it works.
+
+---
+
+### **Project 3 – Java Translation**
+**Goal:**  
+Translate the Python-based EC Password Generator (from Project 2) into **Java**, using **Swing** for the GUI.
+
+**Files:**
+- `ECPasswordGenerator.java` — core logic equivalent of `ec_password_generator.py`
+- `ECPasswordGUI.java` — GUI implementation using Swing components
+
+**Key Classes:**
+```java
+// ECPasswordGenerator.java
+public class ECPasswordGenerator {
+    public static double ecFormula(double row) { ... }
+    public static String generatePassword(String memorablePassword, int length) { ... }
+}
+
+// ECPasswordGUI.java
+public class ECPasswordGUI extends JFrame {
+    private JTextField passwordField;
+    private JTextField lengthField;
+    private JTextArea outputArea;
+    // Event-driven generation using ECPasswordGenerator
 }
 ```
 
-### 🧩 Testing
-- Verified deterministic consistency with Python version  
-- Adjusted `Math.Atanh()` and exception handling for .NET  
-- Confirmed GUI parity using WPF  
+**Deliverables:**
+- Screenshots of the Java GUI.
+- Source code of both Java classes.
+- Short write-up comparing performance and usability between Python (Tkinter) and Java (Swing).
 
 ---
 
-## 🧠 Theory Summary
-
-### Evolutionary Computing
-Simulates natural selection to evolve cipher functions for cryptographic randomness.
-
-### Symbolic Regression
-Uses mathematical evolution to simulate true random noise functions.
-
-### AI Integration
-ChatGPT automates GUI generation, translation, and debugging.
+## 🧪 Testing and Validation
+- **Input:** Memorable password and desired password length.
+- **Output:** Strong password and `.txt` file with stored results.
+- **Validation:** Ensure the strong password is consistent for the same inputs.
+- **Cross-language check:** The Java output should match the Python version for the same inputs.
 
 ---
 
-## 🧩 Appendix
-
-### Appendix A — AI Prompts Used
-| Task | Prompt |
-|------|---------|
-| Generate Cipher Function | “Use symbolic regression output from TuringBot to generate a Python function simulating a nonlinear cipher.” |
-| GUI Design | “Create a tkinter GUI for the strong password generator using the cipher function and file output.” |
-| C# Translation | “Translate the Python GUI and cipher generation program to C# using WPF.” |
-
-### Appendix B — Screenshot Captions
-1. *TuringBot nonlinear evolution process*  
-2. *Python GUI interface displaying generated password*  
-3. *C# translated application showing equivalent output*  
+## 🧰 Technologies Used
+| Component | Technology | Purpose |
+|------------|-------------|----------|
+| Cipher Generation | Python (TuringBot Output) | EC-based cipher formula |
+| GUI Prototype | Python (Tkinter) | GUI for password generation |
+| Translation | Java (Swing) | Cross-language code validation |
+| Data Source | Random.org | Real random noise |
+| AI Support | ChatGPT / Copilot | Code generation & translation |
 
 ---
 
-## 🧾 License
-
-**Creative Commons Attribution 4.0 License (CC BY 4.0)**  
-You may use, adapt, and distribute this material with proper citation.
+## 🎥 Demonstration
+You are required to include an `.mp4` demonstration showing:
+- GUI functionality (input → output).
+- Explanation of how the EC-based generator works.
+- Comparison of the Python and Java GUIs.
 
 ---
 
-## 🏁 Conclusion
+## 📑 Marking Scheme
+| Component | Weight | Description |
+|------------|---------|-------------|
+| Functionality | 50% | Code runs correctly and produces valid outputs. |
+| Code Clarity | 25% | Readability, structure, and use of comments. |
+| Documentation | 25% | Short written explanations and screenshots. |
 
-The **Cipher** project demonstrates the use of **AI-driven code generation** and **evolutionary computing** in practical cybersecurity applications.  
-By evolving nonlinear cipher functions via TuringBot and deploying them in Python and C#, this project proves that:
-> “AI-assisted cryptography empowers individuals to design their own secure, dynamic encryption methods.”
+---
+
+## 🧾 References
+1. Blackledge, J.M., Kingstone, R., & Midgley, B. (2025). *Application of Evolutionary Computing for Generating Encryption Algorithms using AI-based Code Generation.* IntechOpen.  
+2. Walker, D. (2025). *How Do Hackers Get Your Passwords?* ITPro.  
+3. NIST Cryptographic Algorithm Validation Program (2025).  
+4. TuringBot.com and Random.org APIs.  
+
+---
+
+## 🧠 Summary
+This project demonstrates how **AI** and **Evolutionary Computing** can be leveraged to create **personalized, strong password systems** that are secure, deterministic, and replicable.  
+By progressing from **Python cipher generation → GUI implementation → Java translation**, the project highlights the fusion of AI-driven code generation with cryptographic logic.
+
+---
+
+## 📂 Submission Checklist
+✅ Project 1, 2, and 3 subfolders with respective code and screenshots  
+✅ Overview README.md (this file)  
+✅ `.mp4` demonstration video  
+✅ TuringBot screenshot (Project 1)  
+✅ GUI screenshots (Python + Java)  
+✅ All code properly documented  
+
+---
+
+**Author:**  
+Jaydin Morrison  
+**Student No.:** 4260354  
+**Course:** COS738 – Cyber Security  
+**Institution:** University of the Western Cape  
+**Year:** 2025
